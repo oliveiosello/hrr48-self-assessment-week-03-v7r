@@ -3,9 +3,9 @@ import FishTableRow from './FishTableRow.js';
 var FishTable = () => (
   <table>
     <tbody>
-      <FishTableRow />
-      <FishTableRow />
-      <FishTableRow />
+      <FishTableRow name={name}/>
+      <FishTableRow image={image}/>
+      <FishTableRow description={description}/>
     </tbody>
   </table>
 );

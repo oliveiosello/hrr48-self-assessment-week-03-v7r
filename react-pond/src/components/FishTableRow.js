@@ -8,13 +8,14 @@ class FishTableRow extends React.Component {
 
   // Currently, the image being displayed is hardcoded from tinyurl.com
   render() {
+    const {name, image, description} = this.props.index.fishData;
     return (
       <tr onClick={() => this.setState({showDescription: !this.state.showDescription})}>
-        <td className="fish-name">Nemo</td>
+        <td className="fish-name">{name}</td>
         <td>
-          <img src="http://tinyurl.com/h8o5szh" />
+          <img src={image} />
         </td>
-        {this.state.showDescription ? <td className="fish-description">Does anyone know where my dad is?</td> : null}
+        {this.state.showDescription ? <td className="fish-description">{description}</td> : null}
       </tr>
     )
   }
