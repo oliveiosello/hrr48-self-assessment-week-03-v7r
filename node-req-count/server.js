@@ -9,14 +9,23 @@ var server = http.createServer(function(request, response) {
   var property = endpoint.replace(/^\//, '');
 
   if (request.method === 'POST') {
+    // determine if property doesn't exist
+    if (!globalCounter[property]) {
+      //   create property set value to one
+      globalCounter[property] = 1;
+      // end respons
+      response.end()
+      // otherwise
+    } else {
+      // increase value by 1
+      globalCounter[property]++;
+      // end response
+      response.end()
+    }
+  } else if (request.method === 'GET' && globalCounter[property]) {
     // determine if property exists
-    //   if so, increase value by 1
-    // else
-    // create property set value to one
-    // end response
-  } else if (request.method === 'GET') {
-    // determine if property exists
-    // end response, return property
+      // end response, return property
+      response.end(globalCounter[property].toString())
   } else {
     response.statusCode = 404;
     response.end();
